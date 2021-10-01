@@ -1,5 +1,5 @@
 #include "libft.h"
-char	*strncat(char *dest, char *src, size_t dstsize)
+char	*ft_strncat(char *dest, char *src, size_t dstsize)
 {
 	size_t	counter;
 	size_t	tam;

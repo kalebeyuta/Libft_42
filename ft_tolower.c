@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int	tolower(int ch)
+int	ft_tolower(int ch)
 {
 	if (ch > 64 && ch < 91)
 		ch = ch + 32;
