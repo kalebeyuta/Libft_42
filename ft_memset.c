@@ -1,14 +1,14 @@
-#include<libft.h>
+#include"libft.h"
 
 void *ft_memset(void *string,int character, size_t length)
 {
-    char *ifstring;
-    char character;
+    char *fstring;
+    char fcharacter;
 
-    character = (char)character;
-    ifstring = (char *)string;
+    fcharacter = (char)character;
+    fstring = (char *)string;
 
     while(length--)
-            *ifstring++ = character;
-    return(*string);
+            *fstring++ = fcharacter;
+    return(fstring);
 }

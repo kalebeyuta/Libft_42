@@ -2,16 +2,23 @@
 char *ft_strdup(const char *s)
 {
     size_t length;
+    size_t counter;
     char* duplicate;
 
-    while(s[length])
-        length++
+    length = ft_strlen(s);
+    counter = 0;
 
-    duplicate = (char *)malloc(sizeof(char) * (i + 1));
+    duplicate = (char *)malloc(sizeof(char) * (length + 1));
 
-    if (duplicate = NULL)
+    if (duplicate == NULL)
         return NULL;
-    ft_strlcpy(duplicate, s, length +1);
+
+    while(s[counter])
+    {  
+        duplicate[counter] = s[counter];
+        counter++;
+    }
+    duplicate[counter] = '\0';
 
     return (duplicate);
 }

@@ -1,33 +1,27 @@
 #include "libft.h"
-int	ft_strnstr(const char *big, const char *little, size_t length)
+char	*ft_strnstr(const char *big, const char *little, size_t range)
 {
-    unsigned char *fbig;
-    unsigned char *flittle;
+     char *fbig;
+     char *flittle;
     size_t counter;
-    unsigned char	*find;
+	size_t counteri;
     
-    fbig = (unsigned char *)big;
-    flittle = (unsigned char *)little;
+    fbig = ( char *)little;
+    flittle = ( char *)big;
     counter = 0;
-    find = NULL;
-	
-    while (*fbig && counter < length)
-	{
-		if (!flittle[counter])
-			break ;
-		if (*fbig == flittle[counter++])
-		{
-			if (!find)
-				find = fbig;
-		}
-		else
-		{
-			find = NULL;
-			counter = 0;
-		}
-		fbig++;
-	}
-	return (find);
-}
 
+	if(*little == '\0' || little == NULL)
+		return((char *)big);
+    while (flittle[counter] && counter < range)
+	{
+		counteri = 0;
+		while(fbig[counteri] == flittle[counter + counteri] && (counter + counteri) < range)
+		{
+			if (fbig[counteri +1] == '\0')
+				return(flittle + counter);
+			counteri++;
+		}
+		counter++;
+	}
+	return (NULL);
 }

@@ -1,6 +1,7 @@
+#include "libft.h"
 int ft_memcmp(const void *s1, const void *s2, size_t range)
 {
-    unsigned char *fs1
+    unsigned char *fs1;
     unsigned char *fs2;
     size_t counter;
 
