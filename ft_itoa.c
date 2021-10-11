@@ -1,52 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kyuta-sa <kyuta-sa@student.42sp.org.br     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/08 19:16:02 by kyuta-sa          #+#    #+#             */
+/*   Updated: 2021/10/08 19:18:34 by kyuta-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-static char	*ft_array(char *x, unsigned int number, long int len)
-{
-	while (number > 0)
-	{
-		x[len--] = 48 + (number % 10);
-		number = number / 10;
-	}
-	return (x);
-}
 
-static long int	ft_len(int n)
+static long int	ft_strnlen(int n)
 {
-	int					len;
+	int		cont;
 
-	len = 0;
+	cont = 0;
 	if (n <= 0)
-		len = 1;
-	while (n != 0)
+		cont = 1;
+	while (n)
 	{
-		len++;
+		cont++;
 		n = n / 10;
 	}
-	return (len);
+	return (cont);
 }
 
 char	*ft_itoa(int n)
 {
-	char				*x;
+	char				*string;
 	long int			len;
 	unsigned int		number;
-	int					sign;
 
-	sign = 1;
-	len = ft_len(n);
-	x = (char *)malloc(sizeof(char) * (len + 1));
-	if (!(x))
+	len = ft_strnlen(n);
+	string = (char *)malloc(sizeof(char) * (len + 1));
+	if (!(string))
 		return (NULL);
-	x[len--] = '\0';
+	string[len--] = '\0';
 	if (n == 0)
-		x[0] = '0';
+		string[0] = '0';
 	if (n < 0)
 	{
-		sign *= -1;
 		number = n * -1;
-		x[0] = '-';
+		string[0] = '-';
 	}
 	else
 		number = n;
-	x = ft_array(x, number, len);
-	return (x);
+	while (number > 0)
+	{
+		string[len] = 48 + (number % 10);
+		number = number / 10;
+		len--;
+	}
+	return (string);
 }

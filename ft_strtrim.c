@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kyuta-sa <kyuta-sa@student.42sp.org.br     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/08 19:49:53 by kyuta-sa          #+#    #+#             */
+/*   Updated: 2021/10/08 19:50:36 by kyuta-sa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_char_in_set(char c, char const *set)
+int	ft_verification(char c, char const *set)
 {
 	size_t	i;
 
@@ -19,17 +31,17 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*str;
 	size_t	i;
 	size_t	start;
-	size_t	len;
+	size_t	length;
 
 	start = 0;
-	while (s1[start] && ft_char_in_set (s1[start], set))
+	while (s1[start] && ft_verification (s1[start], set))
 		start ++;
-	len = ft_strlen(s1);
-	while (len > start && ft_char_in_set (s1[len - 1 ], set))
-		len--;
-	str = (char *) malloc (sizeof(*s1) * (len - start + 1));
+	length = ft_strlen(s1);
+	while (length > start && ft_verification (s1[length - 1 ], set))
+		length--;
+	str = (char *) malloc (sizeof(*s1) * (length - start + 1));
 	i = 0 ;
-	while (start < len)
+	while (start < length)
 		str[i ++] = s1[start ++];
 	str[i] = 0 ;
 	return (str);
