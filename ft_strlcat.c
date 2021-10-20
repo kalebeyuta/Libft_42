@@ -6,32 +6,27 @@
 /*   By: kyuta-sa <kyuta-sa@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 21:07:47 by kyuta-sa          #+#    #+#             */
-/*   Updated: 2021/10/07 21:09:40 by kyuta-sa         ###   ########.fr       */
+/*   Updated: 2021/10/20 15:15:28 by kyuta-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, char *src, size_t range)
-{
-	size_t	counter;
-	size_t	size_destination;
-	size_t	size_source;
-	size_t	total;
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
+{	
+	size_t	destlen;
+	size_t	d;
+	size_t	s;
 
-	size_destination = ft_strlen(dest);
-	size_source = ft_strlen(src);
-	counter = 0;
-	if (range > size_destination)
-		total = size_destination + size_source;
-	else
-		total = size_source + range;
-	while ((size_destination + 1) < range && src[counter])
-	{
-		dest[size_destination] = src[counter];
-		size_destination++;
-		counter++;
-	}
-	dest[size_destination] = '\0';
-	return (total);
+	destlen = ft_strlen(dest);
+	d = destlen;
+	s = 0;
+	if (destlen >= size)
+		return (size + ft_strlen(src));
+	while (size > d + 1 && src[s] != '\0')
+		dest[d++] = src[s++];
+	if (d == size)
+		dest[d] = '\0';
+	dest[d] = '\0';
+	return (destlen + ft_strlen(src));
 }

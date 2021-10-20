@@ -6,20 +6,21 @@
 /*   By: kyuta-sa <kyuta-sa@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 19:13:43 by kyuta-sa          #+#    #+#             */
-/*   Updated: 2021/10/07 19:15:51 by kyuta-sa         ###   ########.fr       */
+/*   Updated: 2021/10/20 15:18:59 by kyuta-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-void	*ft_memset(void *string, int character, size_t length)
+void	*ft_memset(void *s, int c, size_t len)
 {
-	char	*fstring;
-	char	fcharacter;
+	char	*str;
 
-	fcharacter = (char)character;
-	fstring = (char *)string;
-	while (length--)
-		*fstring++ = fcharacter;
-	return (fstring);
+	str = (char *)s;
+	while (len > 0)
+	{
+		str[len - 1] = c;
+		len--;
+	}
+	return (s);
 }
